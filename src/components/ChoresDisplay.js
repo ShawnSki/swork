@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './ChoresDisplay.css'
+
 class ChoresDisplay extends Component {
     constructor() {
         super()
         this.state = {
-            chores: []
+            chores: [],
+            test: 1
         }
     }
 
@@ -17,15 +20,26 @@ class ChoresDisplay extends Component {
             })
         })
     }
-    
+
 
 
     render() {
-        const {chores} = this.state;
-        console.log(chores)
-        
+        // This is mapping over the chores list and displaying each item
+        const choresMapped = this.state.chores.map((choreObj) => {
+            return <div className='choreItem' key={choreObj.id}>
+                <div className='btnBox'>
+                    <button>X</button>
+                </div>
+                <h2>{choreObj.listing}</h2>
+                <span className='points'>{choreObj.points}</span>
+            </div>
+        })
+        // console.log(chores[1].id)
+
         return (
-            <div>Chores Display</div>
+
+            <div>{choresMapped}</div>
+
         )
     }
 }

@@ -21,7 +21,7 @@ module.exports = {
             id: id
         }
         // chores = [...chores, newChore];
-        chores.push(newChore)
+        chores.unshift(newChore)
         res.status(200);
         // Do I need to '.send' anything here?
         // console.log(chores)

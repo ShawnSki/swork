@@ -11,6 +11,7 @@ module.exports = {
         res.status(200).send(chores);
     },
     // This adds a new chore to the chores array
+
     addChore: (req, res) => {
         // console.log(req.body)
         const id = chores[chores.length - 1].id + 1;
@@ -21,8 +22,8 @@ module.exports = {
             id: id
         }
         // chores = [...chores, newChore];
-        chores.unshift(newChore)
-        res.status(200);
+        chores.push(newChore);
+        res.status(200).send(chores);
         // Do I need to '.send' anything here?
         // console.log(chores)
     } 

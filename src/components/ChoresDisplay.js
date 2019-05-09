@@ -19,7 +19,7 @@ class ChoresDisplay extends Component {
         })
         // console.log(chores[1].id)
         return (
-            <div>{choresMapped}</div>
+            <div>{choresMapped.reverse()}</div>
         )
     }
 }

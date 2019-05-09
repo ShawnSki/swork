@@ -1,30 +1,22 @@
-import React, { Component } from 'react';
-// import axios from 'axios';
+import React from 'react';
+import './Header.css'
 
 
-class Header extends Component {
-    constructor() {
-        super() 
-        this.state = {
-            newChoreListing: ''
-        }
-    }
-
-
-    render() {
-        
-        // console.log(this.state.newChoreListing)
+function Header(props) {
+ 
         return (
-            <div>
-                <div>header</div>
-                <form onSubmit={this.props.handleAddChore}>
-                <input placeholder='something' name='newChoreListing' onChange={this.props.handleUpdateInput} />
+            <div className='headerItem'>
+            <div>logo</div>
+                <div>
+                <form onSubmit={props.handleAddChore}>
+                <input className='inputChore' placeholder='Add a new item...' name='newChoreListing' onChange={props.handleUpdateInput} />
+                <input className='inputPoints' placeholder='Points' name='newChorePoints' onChange={props.handleUpdateInput} />
                 <button>send</button>
                 </form>
+                </div>
             </div>
-        )
-    }
-
+        );
+    
 }
 
 export default Header;

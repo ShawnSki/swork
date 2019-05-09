@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
+
 import ChoresDisplay from './components/ChoresDisplay';
 import PointsDisplay from './components/PointsDisplay';
 import Header from './components/Header'
@@ -11,7 +12,8 @@ class App extends Component {
     super()
     this.state = {
       chores: [],
-      newChoreListing: ''
+      newChoreListing: '',
+      newChorePoints: null
     }
   }
 
@@ -24,6 +26,7 @@ class App extends Component {
     })
   }
 
+// Adding new chore functionality below
   handleUpdateInput = (e) => {
     // console.log(e.target.name)
     this.setState({
@@ -34,7 +37,8 @@ class App extends Component {
   handleAddChore = (e) => {
     e.preventDefault();
     axios.post('/api/addChore', {
-      listing: this.state.newChoreListing
+      listing: this.state.newChoreListing,
+      points: this.state.newChorePoints
     })
       .then((res) => {
         this.setState({
@@ -45,8 +49,6 @@ class App extends Component {
         console.log(error)
       })
   }
-
-
 
 
   render() {

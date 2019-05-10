@@ -14,9 +14,12 @@ class App extends Component {
       chores: [],
       newChoreListing: '',
       newChorePoints: null,
-      spousePoints: 0
+      spousePoints: 0,
+      updatedChorePoints: 0,
+      editChore: false
     }
   }
+
 
   componentDidMount() {
     axios.get('/api/chores').then((res) => {
@@ -29,7 +32,7 @@ class App extends Component {
 
 // Adding new chore functionality below
   handleUpdateInput = (e) => {
-    // console.log(e.target.name)
+    // console.log(e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })
@@ -51,6 +54,32 @@ class App extends Component {
         console.log(error)
       })
   }
+
+  handleUpdateChorePoints = (e) => {
+    e.preventDefault();
+    console.log(e.target.name)
+    axios.put(`/api/updateChore/${e.target.name}`, {
+      points: this.state.updatedChorePoints
+    })
+    .then((res) => {
+      console.log(res.data)
+      this.setState({
+        chores: res.data
+        // editChore: !this.state.editChore
+      })
+    })
+    .catch(error => {
+      console.log(error)
+    })
+  }
+
+
+  updateEditSwitch = () => {
+    this.setState({
+        editChore: !this.state.editChore
+    })
+}
+ 
   
 
 // Deleting a chore functionality
@@ -65,6 +94,7 @@ class App extends Component {
       console.log(error)
     })
   }
+
 // This updates the score when chkbox is clicked
   handleCompleteChore = (e) => {
     this.state.spousePoints += +`${e.target.name}`;
@@ -79,12 +109,16 @@ class App extends Component {
       <div className="App">
         <Header handleAddChore={this.handleAddChore} handleUpdateInput={this.handleUpdateInput} />
         <ChoresDisplay choreList={this.state.chores} 
+        editSwitch={this.state.editChore}
         handleDeleteChore={this.handleDeleteChore}
-        handleCompleteChore={this.handleCompleteChore} />
+        handleCompleteChore={this.handleCompleteChore}
+        handleUpdateChorePoints={this.handleUpdateChorePoints}
+        handleUpdateInput={this.handleUpdateInput}
+        updateEditSwitch={this.updateEditSwitch} />
         <PointsDisplay />
       </div>
     );
   }
-}
+} 
 
 export default App;

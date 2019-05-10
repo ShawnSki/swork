@@ -37,6 +37,7 @@ module.exports = {
     updateChore: (req, res) => {
         // const updatedChoreId = req.params;
         // const updatedChore = req.body;
+        console.log(req.body)
         const choreFound = chores.filter((item) => item.id === +req.params.id)
         const choreIndex = chores.indexOf(choreFound[0]);
         chores.splice(choreIndex,1, req.body)

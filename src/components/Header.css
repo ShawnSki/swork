@@ -39,7 +39,7 @@ input::placeholder {
 input:focus {
     outline: none;
 }
-form button {
+.headerContainer form button {
     background: #009eb5;
     border: none;
     color: #c7e3e9;
@@ -51,9 +51,9 @@ form button {
     letter-spacing: 2px;
     outline: none;
 }
-form button:hover {
+.headerContainer form button:hover {
     background: #00b7d2;
 }
-form button:active {
+.headerContainer form button:active {
     background: #008a9e;
 }

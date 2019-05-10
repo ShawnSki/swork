@@ -5,22 +5,24 @@ var imageName = require('../spouseworklogo.png')
 
 function Header(props) {
 
+
+
     return (
         <div className='headerItem'>
             <div>
                 {/* <img src={imageName} /> */}
             </div>
             <div className='headerContainer'>
-                <form onSubmit={props.handleAddChore}>
+                <form id='choreForm' onSubmit={props.handleAddChore}>
                     <input className='inputChore' placeholder='Add a new item...' name='newChoreListing' onChange={props.handleUpdateInput} />
                     <input className='inputPoints' placeholder='Points' name='newChorePoints' onChange={props.handleUpdateInput} />
                     <button>POST</button>
                 </form>
             </div>
-        </div>
-    );
-
-}
-
-
+            </div>
+            );
+        
+        }
+        
+        
 export default Header;

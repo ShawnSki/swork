@@ -5,13 +5,14 @@ import './ChoresDisplay.css'
 
 
 class ChoresDisplay extends Component {
+    
 
     render() {
         // This is mapping over the chores list and displaying each item
         const choresMapped = this.props.choreList.map((choreObj) => {
             return <div className='choreItem' key={choreObj.id}>
                 <div className='btnBox'>
-                    <button>chk</button>
+                    <button name={choreObj.points} onClick={this.props.handleCompleteChore}>chk</button>
                 </div>
                 <h2>{choreObj.listing}</h2>
                 <span className='points'>{choreObj.points}</span>

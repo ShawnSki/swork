@@ -1,15 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class PointsDisplay extends Component {
-    
+function PointsDisplay(props) {
 
-    render() {
+    return (
 
-        return(
-            
-            <div>Points Display</div>
-        )
-        }
+        <div>
+            <h1>Points</h1>
+        </div>
+    )
 }
+
 
 export default PointsDisplay;

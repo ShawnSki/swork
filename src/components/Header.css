@@ -47,7 +47,7 @@ form button {
     margin-right: .5em;
     min-width: 6em;
     font-size: 18px;
-    font-weight: bold;
+    /* font-weight: bold; */
     letter-spacing: 2px;
     outline: none;
 }

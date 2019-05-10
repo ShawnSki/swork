@@ -13,7 +13,8 @@ class App extends Component {
     this.state = {
       chores: [],
       newChoreListing: '',
-      newChorePoints: null
+      newChorePoints: null,
+      spousePoints: 0
     }
   }
 
@@ -44,15 +45,16 @@ class App extends Component {
         this.setState({
           chores: res.data
         })
+        document.getElementById('choreForm').reset();
       })
       .catch(error => {
         console.log(error)
       })
   }
+  
 
 // Deleting a chore functionality
   handleDeleteChore = (e) => {
-    // console.log(e.target.name)
     axios.delete(`/api/chore/${e.target.name}`)
     .then((res) => {
       this.setState({
@@ -63,12 +65,22 @@ class App extends Component {
       console.log(error)
     })
   }
+// This updates the score when chkbox is clicked
+  handleCompleteChore = (e) => {
+    this.state.spousePoints += +`${e.target.name}`;
+    console.log(this.state.spousePoints)
+  }
+
+
 
   render() {
+    
     return (
       <div className="App">
         <Header handleAddChore={this.handleAddChore} handleUpdateInput={this.handleUpdateInput} />
-        <ChoresDisplay choreList={this.state.chores} handleDeleteChore={this.handleDeleteChore} />
+        <ChoresDisplay choreList={this.state.chores} 
+        handleDeleteChore={this.handleDeleteChore}
+        handleCompleteChore={this.handleCompleteChore} />
         <PointsDisplay />
       </div>
     );

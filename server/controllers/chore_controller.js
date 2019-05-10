@@ -24,14 +24,23 @@ module.exports = {
         // chores = [...chores, newChore];
         chores.push(newChore);
         res.status(200).send(chores);
-        // Do I need to '.send' anything here?
         // console.log(chores)
-    } ,
+    },
     
     deleteChore: (req, res) => {
         
         chores = chores.filter((item) => item.id !== +req.params.id)
-        console.log(chores)
+        // console.log(chores)
+        res.status(200).send(chores);
+    },
+
+    updateChore: (req, res) => {
+        // const updatedChoreId = req.params;
+        // const updatedChore = req.body;
+        const choreFound = chores.filter((item) => item.id === +req.params.id)
+        const choreIndex = chores.indexOf(choreFound[0]);
+        chores.splice(choreIndex,1, req.body)
+        // console.log(chores);
         res.status(200).send(chores);
     }
 

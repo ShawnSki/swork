@@ -1,7 +1,7 @@
 let chores = [
-    { listing: 'Take out da trash cuz its smellin bad yo.', points: 20, category: 'Interior', id: 1},
-    { listing: 'The shingles blew right off the roof da other day. Fix it!', points: 80, category: 'Exterior', id: 2},
-    { listing: 'Mow da grazz cuz it lookn shaggy.', points: 40, category: 'Yard', id: 3}
+    { listing: 'Take out da trash cuz its smellin bad yo.', points: 20, notes: 'Write a note...', id: 1},
+    { listing: 'The shingles blew right off the roof da other day. Fix it!', points: 80, notes: 'Write a note...', id: 2},
+    { listing: 'Mow da grazz cuz it lookn shaggy.', points: 40, notes: 'Write a note...', id: 3}
 ]
 
 
@@ -18,7 +18,7 @@ module.exports = {
         const newChore = {
             listing: req.body.listing,
             points: +req.body.points,
-            categroy: req.body.category,
+            notes: req.body.category,
             id: id
         }
         // chores = [...chores, newChore];
@@ -35,12 +35,17 @@ module.exports = {
     },
 
     updateChore: (req, res) => {
-        // const updatedChoreId = req.params;
-        // const updatedChore = req.body;
+        const {id} = req.params;
+        const updatedChore = req.body;
         console.log(req.body)
-        const choreFound = chores.filter((item) => item.id === +req.params.id)
-        const choreIndex = chores.indexOf(choreFound[0]);
-        chores.splice(choreIndex,1, req.body)
+        var myChore = chores.find(element => {
+            return element.id === +id
+        })
+        myChore.points = updatedChore.points;
+
+        // const choreFound = chores.filter((item) => item.id === +req.params.id)
+        // const choreIndex = chores.indexOf(choreFound[0]);
+        // chores.splice(choreIndex,1, req.body)
         // console.log(chores);
         res.status(200).send(chores);
     }

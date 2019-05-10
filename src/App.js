@@ -15,7 +15,7 @@ class App extends Component {
       newChoreListing: '',
       newChorePoints: null,
       spousePoints: 0,
-      updatedChorePoints: 0,
+      updatedChoreNotes: '',
       editChore: false
     }
   }
@@ -59,12 +59,12 @@ class App extends Component {
     e.preventDefault();
     console.log(e.target.name)
     axios.put(`/api/updateChore/${e.target.name}`, {
-      points: this.state.updatedChorePoints
+      notes: this.state.updatedChoreNotes
     })
     .then((res) => {
       console.log(res.data)
       this.setState({
-        chores: res.data
+        chores: res.data,
         // editChore: !this.state.editChore
       })
     })
@@ -74,11 +74,11 @@ class App extends Component {
   }
 
 
-  updateEditSwitch = () => {
-    this.setState({
-        editChore: !this.state.editChore
-    })
-}
+//   updateEditSwitch = () => {
+//     this.setState({
+//         editChore: !this.state.editChore
+//     })
+// }
  
   
 
@@ -100,6 +100,7 @@ class App extends Component {
     this.state.spousePoints += +`${e.target.name}`;
     console.log(this.state.spousePoints)
   }
+
 
 
 

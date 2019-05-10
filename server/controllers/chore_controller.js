@@ -26,7 +26,13 @@ module.exports = {
         res.status(200).send(chores);
         // Do I need to '.send' anything here?
         // console.log(chores)
-    } 
+    } ,
     
+    deleteChore: (req, res) => {
+        
+        chores = chores.filter((item) => item.id !== +req.params.id)
+        console.log(chores)
+        res.status(200).send(chores);
+    }
 
 }

@@ -7,6 +7,7 @@ app.use(express.json());
 
 app.get('/api/chores', chores_controller.getAllChores);
 app.post('/api/addChore', chores_controller.addChore);
+app.delete('/api/chore/:id', chores_controller.deleteChore);
 
 
 

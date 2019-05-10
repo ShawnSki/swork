@@ -8,7 +8,7 @@ function Header(props) {
     return (
         <div className='headerItem'>
             <div>
-                <img src={imageName} />
+                {/* <img src={imageName} /> */}
             </div>
             <div className='headerContainer'>
                 <form onSubmit={props.handleAddChore}>
@@ -21,5 +21,6 @@ function Header(props) {
     );
 
 }
+
 
 export default Header;

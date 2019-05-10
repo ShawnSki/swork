@@ -1,16 +1,59 @@
 .headerItem {
-    background: #ddd;
-    min-height: 5em;
+    background: #1d1d1d;
+    min-height: 30vh;
+    padding: 2em;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.headerContainer {
+    margin-top: 2em;
+    width: 100%;
+}
+form {
+    /* background: red; */
+    /* min-width: 50em; */
 }
 .inputChore {
-    min-width: 50em;
-    padding: 1em;
-    background: none;
-    border: solid 2px #eee;
+    width: 50%;
 }
 .inputPoints {
     width: 3em;
+}
+input {
+    background: none;
+    border: solid 1px #7d7d7d;
+    padding: 1em;
+    margin-right: .5em;
+    padding: 1em;
+}
+input, select, textarea {
+    color: #fff;
+    font-size: 14px;
+}
+input::placeholder {
+    color: #7d7d7d;
+    font-size: 14px;
+}
+input:focus {
+    outline: none;
+}
+form button {
+    background: #009eb5;
+    border: none;
+    color: #c7e3e9;
+    padding: .7em 1.2em;
+    margin-right: .5em;
+    min-width: 6em;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    outline: none;
+}
+form button:hover {
+    background: #00b7d2;
+}
+form button:active {
+    background: #008a9e;
 }

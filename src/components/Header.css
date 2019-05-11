@@ -1,7 +1,7 @@
 .headerItem {
     background: #1d1d1d;
-    min-height: 30vh;
-    padding-top: 3em;
+    min-height: 20vh;
+    padding: 6em 0 3em 0;
     display: flex;
     flex-direction: column;
     align-items: center;

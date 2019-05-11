@@ -32,7 +32,6 @@ class App extends Component {
 
   // Adding new chore functionality below
   handleUpdateInput = (e) => {
-    // console.log(e.target.value)
     this.setState({
       [e.target.name]: e.target.value
     })

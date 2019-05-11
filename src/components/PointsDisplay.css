@@ -6,8 +6,18 @@
     justify-content: center;
     align-items: center;
 }
+.titleContainer {
+    width: 50em;
+}
+.titleContainer h2 {
+    text-align: center;
+    font-size: 50px;
+    margin: 2em 0 0 0;
+}
 
 .pointsCounter h1 {
-    font-size: 200px;
+    text-align: center;
+    font-size: 300px;
+    margin: 0;
     color: #1d1d1d;
 }

@@ -41,7 +41,7 @@ module.exports = {
         var myChore = chores.find(element => {
             return element.id === +id
         })
-        myChore.points = updatedChore.points;
+        myChore.notes = updatedChore.notes;
 
         // const choreFound = chores.filter((item) => item.id === +req.params.id)
         // const choreIndex = chores.indexOf(choreFound[0]);

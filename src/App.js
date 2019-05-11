@@ -30,7 +30,7 @@ class App extends Component {
     })
   }
 
-// Adding new chore functionality below
+  // Adding new chore functionality below
   handleUpdateInput = (e) => {
     // console.log(e.target.value)
     this.setState({
@@ -55,49 +55,53 @@ class App extends Component {
       })
   }
 
-  handleUpdateChorePoints = (e) => {
+  handleUpdateChoreNotes = (e) => {
     e.preventDefault();
     console.log(e.target.name)
     axios.put(`/api/updateChore/${e.target.name}`, {
       notes: this.state.updatedChoreNotes
     })
-    .then((res) => {
-      console.log(res.data)
-      this.setState({
-        chores: res.data,
-        // editChore: !this.state.editChore
+      .then((res) => {
+        console.log(res.data)
+        this.setState({
+          chores: res.data,
+          // editChore: !this.state.editChore
+        })
       })
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
 
-//   updateEditSwitch = () => {
-//     this.setState({
-//         editChore: !this.state.editChore
-//     })
-// }
- 
-  
+  //   updateEditSwitch = () => {
+  //     this.setState({
+  //         editChore: !this.state.editChore
+  //     })
+  // }
 
-// Deleting a chore functionality
+
+
+  // Deleting a chore functionality
   handleDeleteChore = (e) => {
     axios.delete(`/api/chore/${e.target.name}`)
-    .then((res) => {
-      this.setState({
-        chores: res.data
+      .then((res) => {
+        this.setState({
+          chores: res.data
+        })
       })
-    })
-    .catch(error => {
-      console.log(error)
-    })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
-// This updates the score when chkbox is clicked
+  // This updates the score when chkbox is clicked
   handleCompleteChore = (e) => {
-    this.state.spousePoints += +`${e.target.name}`;
+    let pointUpdater = this.state.spousePoints += +`${e.target.name}`;
+    this.setState({
+      spousePoints: pointUpdater
+    })
+  
     console.log(this.state.spousePoints)
   }
 
@@ -105,21 +109,23 @@ class App extends Component {
 
 
   render() {
-    
+
     return (
-      <div className="App">
+      <div>
         <Header handleAddChore={this.handleAddChore} handleUpdateInput={this.handleUpdateInput} />
-        <ChoresDisplay choreList={this.state.chores} 
-        editSwitch={this.state.editChore}
-        handleDeleteChore={this.handleDeleteChore}
-        handleCompleteChore={this.handleCompleteChore}
-        handleUpdateChorePoints={this.handleUpdateChorePoints}
-        handleUpdateInput={this.handleUpdateInput}
-        updateEditSwitch={this.updateEditSwitch} />
-        <PointsDisplay />
+        <div className='choresContainer'>
+          <ChoresDisplay choreList={this.state.chores}
+            editSwitch={this.state.editChore}
+            handleDeleteChore={this.handleDeleteChore}
+            handleCompleteChore={this.handleCompleteChore}
+            handleUpdateChoreNotes={this.handleUpdateChoreNotes}
+            handleUpdateInput={this.handleUpdateInput}
+            updateEditSwitch={this.updateEditSwitch} />
+        </div>
+        <PointsDisplay points={this.state.spousePoints}/>
       </div>
     );
   }
-} 
+}
 
 export default App;

@@ -1,22 +1,24 @@
 .headerItem {
     background: #1d1d1d;
     min-height: 30vh;
-    padding: 2em;
+    padding-top: 3em;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
 }
 
 .headerContainer {
     margin-top: 2em;
-    width: 100%;
+    width: 90%;
+
 }
-form {
-    /* background: red; */
-    /* min-width: 50em; */
+.myForm {
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 .inputChore {
-    width: 50%;
+    width: 60%;
 }
 .inputPoints {
     width: 3em;

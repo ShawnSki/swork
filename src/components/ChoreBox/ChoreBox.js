@@ -7,7 +7,7 @@ class ChoreBox extends Component {
         super(props)
         this.state = {
             edit: false,
-            edittedListing: ''
+            edittedPoints: null
         }
     }
     editToggle = () => {
@@ -31,12 +31,15 @@ class ChoreBox extends Component {
 
     handleChoreUpdate = (id) => {
         axios.put(`/api/updateChore/${id}`, {
-            listing: this.state.edittedListing
+            points: this.state.edittedPoints
         })
-        .then(res => {
-            // console.log(res.data)
+            .then(res => {
+                // console.log(res.data)
                 this.props.updateChore(res.data)
                 this.editToggle();
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 
@@ -46,15 +49,15 @@ class ChoreBox extends Component {
             <div>
                 {(this.state.edit === false)
                     ? (<div>
-                        <h2>Listing: {this.props.choreObj.listing}</h2>
-                        <div>Points: {this.props.choreObj.points}</div>
+                        <h2>{this.props.choreObj.listing}</h2>
+                        <div>{this.props.choreObj.points}</div>
                         <button onClick={this.handleDelete}>X</button>
                         <button onClick={this.editToggle}>Edit</button>
                     </div>) : (
                         <div>
-                            <input name='edittedListing' placeholder='Edit the chore listing . . .' onChange={this.handleUpdateInput} />
+                            <h2>{this.props.choreObj.listing}</h2>
+                            <input name='edittedPoints' onChange={this.handleUpdateInput} />
                             <button onClick={() => this.handleChoreUpdate(this.props.choreObj.id)}>Submit</button>
-                            <div>Points: {this.props.choreObj.points}</div>
                             <button onClick={this.handleDelete}>X</button>
                         </div>
                     )

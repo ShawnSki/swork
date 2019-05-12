@@ -1,7 +1,7 @@
 let chores = [
-    { listing: 'Take out da trash cuz its smellin bad yo.', points: 20, notes: 'Write a note here . . .', id: 1},
-    { listing: 'The shingles blew right off the roof da other day. Fix it!', points: 80, notes: 'Write a note here . . .', id: 2},
-    { listing: 'Mow da grazz cuz it lookn shaggy.', points: 40, notes: 'Write a note here . . .', id: 3}
+    { listing: 'Take out da trash cuz its smellin bad yo.', points: 20, id: 1},
+    { listing: 'The shingles blew right off the roof da other day. Fix it!', points: 80, id: 2},
+    { listing: 'Mow da grazz cuz it lookn shaggy.', points: 40, id: 3}
 ]
 
 
@@ -41,12 +41,7 @@ module.exports = {
             return element.id === +id
             
         })
-        myChore.listing = updatedChore.listing;
-
-        // const choreFound = chores.filter((item) => item.id === +req.params.id)
-        // const choreIndex = chores.indexOf(choreFound[0]);
-        // chores.splice(choreIndex,1, req.body)
-        // console.log(chores);
+        myChore.points = +updatedChore.points;
         res.status(200).send(chores);
     }
 

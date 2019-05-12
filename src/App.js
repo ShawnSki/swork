@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-import ChoresList from './components/ChoresList';
+import ChoresList from './components/ChoresList/ChoresList';
 
 
 function App() {
@@ -9,7 +9,6 @@ function App() {
     return (
       <div>
         <ChoresList />
-       
       </div>
     );
 }

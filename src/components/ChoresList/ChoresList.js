@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-import ChoreBox from './ChoreBox';
+import ChoreBox from '../ChoreBox/ChoreBox';
+import Header from '../Header/Header';
+
 
 class ChoresList extends Component {
     constructor(props){
       super(props)
       this.state = {
-        chores: []
+        chores: [],
+        newChoreListing: '',
+        newChorePoints: null
       }
     }
 
     componentDidMount() {
             this.handleGetAllChores()
+    }
+
+    handleUpdateInput = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
     }
 
     handleGetAllChores = () => {
@@ -34,8 +44,27 @@ class ChoresList extends Component {
             chores: data
         })
     }
+
+    handleAddChore = (e) => {
+        e.preventDefault();
+        axios.post('/api/addChore', {
+          listing: this.state.newChoreListing,
+          points: this.state.newChorePoints
+        })
+          .then((res) => {
+            this.setState({
+              chores: res.data
+            })
+            document.getElementById('choreForm').reset();
+          })
+          .catch(error => {
+            console.log(error)
+          })
+      }
+
   
     render() {
+        // console.log(this.state.chores)
         const choresMapped = this.state.chores.map((choreObj, ind) => {
             return (
                 <ChoreBox key={ind}
@@ -46,8 +75,8 @@ class ChoresList extends Component {
         })
       return (
         <div>
-         <h1>hi</h1>
-         <div>{choresMapped}</div>
+         <Header handleAddChore={this.handleAddChore} handleUpdateInput={this.handleUpdateInput} />
+         <div>{choresMapped.reverse()}</div>
         </div>
       );
     }

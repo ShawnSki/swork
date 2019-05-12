@@ -1,11 +1,9 @@
 import React from 'react';
 import './Header.css'
-var imageName = require('../spouseworklogo.png')
+var imageName = require('./spouseworklogo.png')
 
 
 function Header(props) {
-
-
 
     return (
         <div className='headerItem'>
@@ -23,6 +21,5 @@ function Header(props) {
     );
 
 }
-
 
 export default Header;

@@ -37,11 +37,11 @@ module.exports = {
     updateChore: (req, res) => {
         const {id} = req.params;
         const updatedChore = req.body;
-        console.log(req.body)
         var myChore = chores.find(element => {
             return element.id === +id
+            
         })
-        myChore.notes = updatedChore.notes;
+        myChore.listing = updatedChore.listing;
 
         // const choreFound = chores.filter((item) => item.id === +req.params.id)
         // const choreIndex = chores.indexOf(choreFound[0]);

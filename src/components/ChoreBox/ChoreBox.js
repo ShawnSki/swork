@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './ChoreBox.css';
+
 
 class ChoreBox extends Component {
     constructor(props) {
@@ -17,6 +19,7 @@ class ChoreBox extends Component {
     }
 
     handleDelete = () => {
+        this.props.updateScore(this.props.choreObj.points);
         axios.delete(`/api/chore/${this.props.choreObj.id}`)
             .then(res => {
                 this.props.deleteChore(res.data)
@@ -48,17 +51,29 @@ class ChoreBox extends Component {
         return (
             <div>
                 {(this.state.edit === false)
-                    ? (<div>
-                        <h2>{this.props.choreObj.listing}</h2>
-                        <div>{this.props.choreObj.points}</div>
-                        <button onClick={this.handleDelete}>X</button>
-                        <button onClick={this.editToggle}>Edit</button>
-                    </div>) : (
-                        <div>
+                    ? (<div className="choreBoxContainer">
+                        <div className='leftSideBox'>
+                            <button onClick={this.handleDelete}></button>
                             <h2>{this.props.choreObj.listing}</h2>
-                            <input name='edittedPoints' onChange={this.handleUpdateInput} />
-                            <button onClick={() => this.handleChoreUpdate(this.props.choreObj.id)}>Submit</button>
-                            <button onClick={this.handleDelete}>X</button>
+                        </div>
+                        <div className='rightSideBox'>
+                            <h3>{this.props.choreObj.points}</h3>
+                            <button onClick={this.editToggle}>edit</button>
+                        </div>
+                    </div>) : (
+                        <div className="choreBoxContainer">
+                            <div className='leftSideBox'>
+                                <button onClick={this.handleDelete}></button>
+                                <h2>{this.props.choreObj.listing}</h2>
+                            </div>
+                            <div className='rightSideBox'>
+                                <div>
+                                    <form>
+                                        <input placeholder={this.props.choreObj.points} name='edittedPoints' onChange={this.handleUpdateInput} />
+                                        <button onClick={() => this.handleChoreUpdate(this.props.choreObj.id)}>submit</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     )
                 }
@@ -67,4 +82,4 @@ class ChoreBox extends Component {
     }
 }
 
-export default ChoreBox
+export default ChoreBox;

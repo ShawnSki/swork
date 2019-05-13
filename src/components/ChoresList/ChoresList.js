@@ -3,6 +3,9 @@ import axios from 'axios';
 
 import ChoreBox from '../ChoreBox/ChoreBox';
 import Header from '../Header/Header';
+import PointsDisplay from '../PointsDisplay/PointsDisplay';
+
+import './ChoresList.css';
 
 
 class ChoresList extends Component {
@@ -11,7 +14,8 @@ class ChoresList extends Component {
       this.state = {
         chores: [],
         newChoreListing: '',
-        newChorePoints: null
+        newChorePoints: null,
+        spousePoints: 0
       }
     }
 
@@ -62,6 +66,15 @@ class ChoresList extends Component {
           })
       }
 
+      handleUpdateScore = (points) => {
+        let pointUpdater = this.state.spousePoints += +points;
+        this.setState({
+          spousePoints: pointUpdater
+        })
+      
+        console.log(this.state.spousePoints)
+      }
+
   
     render() {
         // console.log(this.state.chores)
@@ -70,13 +83,15 @@ class ChoresList extends Component {
                 <ChoreBox key={ind}
                         choreObj={choreObj}
                         deleteChore={this.handleDeleteChore}
-                        updateChore={this.handleUpdateChore} />
+                        updateChore={this.handleUpdateChore}
+                        updateScore={this.handleUpdateScore} />
             )
         })
       return (
         <div>
          <Header handleAddChore={this.handleAddChore} handleUpdateInput={this.handleUpdateInput} />
-         <div>{choresMapped.reverse()}</div>
+         <div className='choresContainer'>{choresMapped.reverse()}</div>
+         <PointsDisplay points={this.state.spousePoints}/>
         </div>
       );
     }

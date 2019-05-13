@@ -4,3 +4,25 @@
     align-items: stretch;
     margin: 3em 8em 12em 8em;
 }
+
+.sortBy {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-right: 8em;
+    margin-top: 2em;
+}
+
+.sortBy button {
+    background: none;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 10px;
+}
+
+.sortBy p {
+    color: #fff;
+    font-size: 12px;
+    font-weight: bold;
+}

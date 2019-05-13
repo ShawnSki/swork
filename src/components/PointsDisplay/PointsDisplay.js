@@ -9,7 +9,7 @@ function PointsDisplay(props) {
         <div className='pointsContainer'>
             <div className='pointsCounter'>
                 <div className='titleContainer'>
-                    {/* <h2>Spouse Points</h2> */}
+                    <h2>Spouse Points</h2>
                 </div>
                 <div>
                     <h1>{props.points}</h1>
@@ -18,7 +18,5 @@ function PointsDisplay(props) {
         </div>
     )
 }
-
-
 
 export default PointsDisplay;
